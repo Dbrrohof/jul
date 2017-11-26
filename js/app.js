@@ -117,7 +117,7 @@ function getAnswerReady() {
     document.getElementById('answer').innerHTML = "Øv... Der er ikke flere navne i posen";
   }
   if (keys.length == 2) {
-    // check if the two names in the hat exist in the left array, if so, asign the "double-person" to currentUser
+    // check if the two names in the hat exist in the usersLeft array, if so, asign the "double-person" to currentUser
     for (let i = 0; i < bucketArray.length; i++) {
       if (usersLeft[bucketArray[i]]) {
         //console.log(bucketArray[i] + " has no nisse and isn't picked, asigning her to currentUser");
