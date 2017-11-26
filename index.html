@@ -27,7 +27,7 @@
 
   <div class="row text-center">
     <div class="col-sm-12">
-        <input id="nisseknap" type="button" value="Tryk her for at trække et navn!" onclick="getAnswer()"> 
+        <div id="nisseknap" onclick="getAnswer()">Tryk her for at trække et navn!</div>
     </div>
   </div>
 
@@ -42,7 +42,7 @@
     <p>Upload din ønskeliste (ingen Æ, Ø eller Å i filnavnet):</p>
     <div class="col-sm-12">
       <input id="wishes" type="file" class="form-control" placeholder="Ingen Æ Ø eller Å i filnavnet!" value="">
-      <input id="uploadButton" type="button" value="Upload" onclick="uploadWishlist()">
+      <div id="uploadButton" value="Upload" onclick="uploadWishlist()">Upload</div>
     </div>
     <div id="noWishes"></div>
   </div>
@@ -58,14 +58,14 @@
     <p>Her kan du skifte dit kodeord:</p>
     <form id="changepass" class="col-sm-12">
       <input id="newPassword" type="text" class="form-control" placeholder="Skift adgangskode" value="">
-      <input id="passButton" type="button" value="Skift!" onclick="newPass()">
+      <div id="passButton" value="" onclick="newPass()"> Skift!</div>
       <div id="passwordChanged">
       </div>  
     </form>
   </div>
   
   <div class="row text-center">
-      <input id="logud" type="button" value="Log ud" onclick="logOut()">
+      <div id="logud" onclick="logOut()">Log ud</div>
       <img id="snemand" src="img/snemand.png"> 
   </div>
 

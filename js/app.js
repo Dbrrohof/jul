@@ -39,13 +39,13 @@ wishlists.on('value', function(snapshot) {
 var currentUser = sessionStorage.getItem("name");
 if (currentUser) {
   // Hello user!
-  document.getElementById('hello').innerHTML = "Hej " + currentUser + "!";
+  document.getElementById('hello').innerHTML = "Hej <span class='name'>" + currentUser + "</span>!";
 
   // Call to see if nisse is assigned to currentUser
   getNisse();
 } else {
   // show the signup or login page
-  window.location = "signup.html"
+  window.location = "signup"
 }
 
 function getNisse() {
@@ -53,7 +53,7 @@ function getNisse() {
 		if (snapshot.val() == "none" || snapshot.val() == 0 || snapshot.val() == null) {
       document.getElementById('answer').innerHTML = "???"
 		} else {
-      document.getElementById('answer').innerHTML = "Du er nisse for " + snapshot.val();
+      document.getElementById('answer').innerHTML = "Du er nisse for <span class='name'>" + snapshot.val() + "</span>";
       document.getElementById('nisseknap').disabled = true;
       document.getElementById('nisseknap').value = "Du er en nisse!";
 		}
@@ -80,7 +80,7 @@ function getNisse() {
 function logOut() {
   sessionStorage.clear();
   currentUser = null;
-  window.location = "signup.html"
+  window.location = "signup"
 }
 
 //Find nisse
@@ -109,7 +109,7 @@ function getAnswerReady() {
 
   // // Assign nisse to you
   firebase.database().ref('users/' + currentUser).update({ nisse: chosenNisse });
-  document.getElementById('answer').innerHTML = "Du er nisse for " + chosenNisse;
+  document.getElementById('answer').innerHTML = "Du er nisse for <span class='name'>" + chosenNisse + "</span>";
 
   // Remove nisse from bucket
   firebase.database().ref('hat/').update({ [chosenNisse]: 1});
@@ -201,7 +201,7 @@ function newPass() {
 function uploadWishlist() {
   
   if (document.getElementById("wishes").value == "") {
-    document.getElementById('noWishes').innerHTML = "Husk at vælg en fil før du trykker på knappen :-)";
+    document.getElementById('noWishes').innerHTML = "Husk at vælge en fil før du trykker på knappen :-)";
   } else {
     // GET ELEMENTS
     var fileUploadControl =  document.getElementById('wishes');

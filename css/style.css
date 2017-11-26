@@ -1,24 +1,25 @@
-
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 body { 
-	background:#C21F1F;
+	background:#B3000C;
     background-image: url('https://i.imgur.com/BiSmXaq.png'), url('https://i.imgur.com/XHuy0NJ.png'), url('https://i.imgur.com/okpRxJU.png');
     -webkit-animation: snow 20s linear infinite;
     -moz-animation: snow 20s linear infinite;
     -ms-animation: snow 20s linear infinite;
     animation: snow 20s linear infinite;
+    font-family: 'Raleway', sans-serif;
 }
 
 h1 {
 	color: gold;
 	font-size: 4em;
-    text-shadow: 0 -1px 1px rgba(255, 255, 255, .9), 0 0 3px rgba(5, 5, 5, .8);
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, .9), 0 0 3px rgba(5, 5, 5, .8);
 }
 
 p {
     color: gold;
     margin-top: 2%;
     font-size: 1.7em;
-    text-shadow: 0 -1px 1px rgba(255, 255, 255, .9), 0 0 3px rgba(5, 5, 5, .8);
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, .9), 0 0 3px rgba(5, 5, 5, .8);
 }
 
 #textfield {
@@ -37,14 +38,14 @@ p {
 #answer {
 	margin-top: 5%;
 	margin: 0 auto; 
-	background:#3C8D0D; 
+	background:#0D5901; 
 	color:black;
 	font-family: inherit;
 	font-weight: 500;
 	line-height: 1.1;
 	color: gold; 
 	font-size: 2em;
-	border: 1px solid #3C8D0D;
+	/* border: 1px solid #3C8D0D; */
 	border-radius: 5px;
 	padding: 3%;
 	width: 40%;
@@ -62,24 +63,20 @@ p {
     margin-top: 2%;
     margin-bottom: 3%;
     padding: 20px 30px;
-    background-color: #3C8D0D;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3C8D0D), to(#3C3D0D));
-    background-image: -webkit-linear-gradient(#3C8D0D, #3C3D0D);
-    background-image: -moz-linear-gradient(#3C8D0D, #3C3D0D);
-    background-image: -o-linear-gradient(#3C8D0D, #3C3D0D);
+    background-color: #0D5901;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow:    0 8px 0 #3C3D0D, 0 12px 10px rgba(0, 0, 0, .3);
-    -moz-box-shadow: 0 8px 0 #3C3D0D, 0 12px 10px rgba(0, 0, 0, .3);
-    box-shadow:    0 8px 0 #3C3D0D, 0 12px 10px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     outline: none;
-
+    cursor: pointer;
     font-size: 2em;
     color: gold;
 
     line-height: 1;
-    text-shadow: 0 -1px 1px rgba(255, 255, 255, .4), 0 0 1px rgba(5, 5, 5, .8);
+    /* text-shadow: 0 -1px 1px rgba(255, 255, 255, .4), 0 0 1px rgba(5, 5, 5, .8); */
     -webkit-transition: background-color .2s ease-in-out, -webkit-transform .1s ease-in-out;
     -moz-transition: background-color .2s ease-in-out, -moz-transform .1s ease-in-out;
     -o-transition: background-color .2s ease-in-out, -o-transform .1s ease-in-out;
@@ -92,9 +89,6 @@ p {
 }
 
 #nisseknap:active, #nisseknap:focus {
-    -webkit-box-shadow:    0 8px 0 #3C3D0D, 0 12px 10px rgba(0, 0, 0, .3);
-    -moz-box-shadow: 0 8px 0 #3C3D0D, 0 12px 10px rgba(0, 0, 0, .3);
-    box-shadow:    0 8px 0 #3C3D0D, 0 12px 10px rgba(0, 0, 0, .3);
     outline: none;
 }
 
@@ -130,19 +124,15 @@ p {
     margin-bottom: 2%;
     padding: 20px 30px;
     z-index: 999999;
-    background-color: #3C8D0D;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3C8D0D), to(#3C3D0D));
-    background-image: -webkit-linear-gradient(#3C8D0D, #3C3D0D);
-    background-image: -moz-linear-gradient(#3C8D0D, #3C3D0D);
-    background-image: -o-linear-gradient(#3C8D0D, #3C3D0D);
+    background-color: #0D5901;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow:    0 8px 0 #3C3D0D, 0 12px 10px rgba(0, 0, 0, .3);
-    -moz-box-shadow: 0 8px 0 #3C3D0D, 0 12px 10px rgba(0, 0, 0, .3);
-    box-shadow:    0 8px 0 #3C3D0D, 0 12px 10px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
     outline: none;
-
+    cursor: pointer;
     font-size: 2em;
     color: gold;
 
@@ -172,19 +162,15 @@ p {
     display: inline-block;
 
 
-    background-color: #3C8D0D;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3C8D0D), to(#3C3D0D));
-    background-image: -webkit-linear-gradient(#3C8D0D, #3C3D0D);
-    background-image: -moz-linear-gradient(#3C8D0D, #3C3D0D);
-    background-image: -o-linear-gradient(#3C8D0D, #3C3D0D);
+    background-color: #0D5901;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow:    0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
-    -moz-box-shadow: 0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
-    box-shadow:    0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
     outline: none;
-
+    cursor: pointer;
     font-size: 1.2em;
     color: gold;
     padding: 8px;
@@ -218,17 +204,13 @@ p {
 
 #wishlists a {
     margin-top: 4%;
-    background-color: #3C8D0D;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3C8D0D), to(#3C3D0D));
-    background-image: -webkit-linear-gradient(#3C8D0D, #3C3D0D);
-    background-image: -moz-linear-gradient(#3C8D0D, #3C3D0D);
-    background-image: -o-linear-gradient(#3C8D0D, #3C3D0D);
+    background-color: #0D5901;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow:    0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
-    -moz-box-shadow: 0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
-    box-shadow:    0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
     outline: none;
 
     font-size: 1.2em;
@@ -238,6 +220,9 @@ p {
 
     line-height: 1;
     text-shadow: 0 -1px 1px rgba(255, 255, 255, .4), 0 0 1px rgba(5, 5, 5, .8);
+}
+#wishlists a:hover {
+    background-color: rgb(17, 105, 2);
 }
 
 #wishlist {
@@ -254,19 +239,15 @@ p {
     display: inline-block;
     margin-top: 2%;
 
-    background-color: #3C8D0D;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3C8D0D), to(#3C3D0D));
-    background-image: -webkit-linear-gradient(#3C8D0D, #3C3D0D);
-    background-image: -moz-linear-gradient(#3C8D0D, #3C3D0D);
-    background-image: -o-linear-gradient(#3C8D0D, #3C3D0D);
+    background-color: #0D5901;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow:    0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
-    -moz-box-shadow: 0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
-    box-shadow:    0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
     outline: none;
-
+    cursor: pointer;
     font-size: 1.2em;
     color: gold;
     padding: 8px;
@@ -296,6 +277,27 @@ p {
 .list-group {
       margin-bottom: 0px; 
     }
+
+.name {
+    text-transform: capitalize;
+}
+
+.form-control {
+    color: white;
+    background-color:#DC3D2A;
+    border: 2px solid black;
+    height: 100%;
+    padding: 12px 12px
+}
+
+#noWishes{
+    color: #fff;
+
+}
+
+.list-group-item {
+    border: 1px solid #333;
+}
 
 @media only screen and (max-width : 480px) {
     h1 {
@@ -337,17 +339,13 @@ p {
   
     #wishlists a {
         margin-top: 1%;
-        background-color: #3C8D0D;
-        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3C8D0D), to(#3C3D0D));
-        background-image: -webkit-linear-gradient(#3C8D0D, #3C3D0D);
-        background-image: -moz-linear-gradient(#3C8D0D, #3C3D0D);
-        background-image: -o-linear-gradient(#3C8D0D, #3C3D0D);
+        background-color: #0D5901;
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;
         border-radius: 8px;
-        -webkit-box-shadow:    0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
-        -moz-box-shadow: 0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
-        box-shadow:    0 4px 0 #3C3D0D, 0 8px 6px rgba(0, 0, 0, .3);
+        -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
         outline: none;
         font-size: 1.2em;
         color: gold;
@@ -421,34 +419,34 @@ p {
 /*---- sne ----*/
 @-webkit-keyframes snow {
     0% { background-position: 0px 0px, 0px 0px, 0px 0px }
-    50% { background-color: #C21F1F }
+    50% { background-color: #B3000C }
     100% {
         background-position: 500px 1000px, 400px 400px, 300px 300px;
-        background-color: #C21F1F;
+        background-color: #B3000C;
     }
 }
 @-moz-keyframes snow {
     0% { background-position: 0px 0px, 0px 0px, 0px 0px }
-    50% { background-color: #C21F1F }
+    50% { background-color: #B3000C }
     100% {
         background-position: 500px 1000px, 400px 400px, 300px 300px;
-        background-color: #C21F1F;
+        background-color: #B3000C;
     }
 }
 @-ms-keyframes snow {
     0% { background-position: 0px 0px, 0px 0px, 0px 0px }
-    50% { background-color: #C21F1F }
+    50% { background-color: #B3000C }
     100% {
         background-position: 500px 1000px, 400px 400px, 300px 300px;
-        background-color: #C21F1F;
+        background-color: #B3000C;
     }
 }
 @keyframes snow {
     0% { background-position: 0px 0px, 0px 0px, 0px 0px }
-    50% { background-color: #C21F1F }
+    50% { background-color: #B3000C }
     100% {
         background-position: 500px 1000px, 400px 400px, 300px 300px;
-        background-color: #C21F1F;
+        background-color: #B3000C;
     }
 }
 
