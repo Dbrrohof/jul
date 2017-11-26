@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+  <title> Julelodtrækning</title>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+
+</head>
+
+<body>
+
+
+<div class="container-fluid"> 
+
+  <div id="snow"></div>
+
+  <div class="row text-center">
+      <div class="col-sm-12">
+        <h1>Nisselodtrækning 2014</h1>
+        <p id="hello"></p>
+      </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-sm-12">
+        <input id="nisseknap" type="button" value="Hvem skal du være nisse for?" onclick="getAnswer()"> 
+    </div>
+  </div>
+
+
+  <div class="row text-center">
+      <div id="answer">
+      </div>
+  </div>
+
+  <div class="row text-center">
+        <input id="logud" type="button" value="Log ud" onclick="logOut()">
+        <img id="snemand" src="img/snemand.png"> 
+  </div>
+
+  <div class="row text-center">
+    <form id="changepass" class="col-sm-12">
+      <input id="newPassword" type="text" class="form-control" placeholder="Skift adgangskode" value="">
+      <input id="passButton" type="button" value="Skift!" onclick="newPass()">
+      <div id="passwordChanged">
+      </div>  
+    </form>
+
+  </div>
+</div>
+
+<script src="js/jquery-1.11.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    Parse.initialize("HbyNa58QqpdsmlkaGTvIp3nAyq4ln0mmURgkJRX4", "eAm3idmLuSatsMfDwin5PxaguLMbolkwltK4oZWp");
+
+
+    //Check if logged in
+    var currentUser = Parse.User.current();
+      if (currentUser) {
+        // do stuff with the user
+        document.getElementById('hello').innerHTML = "Hej " + currentUser.get("username") + "!";
+      }      
+      else {
+      // show the signup or login page
+      window.location = "signup.html"
+      }
+
+    if (currentUser.get('nisse')) {
+      document.getElementById('answer').innerHTML = "Du er nisse for " + currentUser.get('nisse');
+      document.getElementById('nisseknap').disabled = true;
+      document.getElementById('nisseknap').value="Du har fået en nisse!";
+    }
+
+
+    // log out
+    function logOut() {
+      Parse.User.logOut();
+      var currentUser = Parse.User.current();  // this will now be null
+      window.location = "signup.html"
+    }
+
+    //Find nisse
+    function getAnswer() {
+
+      // Get data from parse
+      var Navne = Parse.Object.extend("Navne");
+      var query = new Parse.Query(Navne);
+      var object = [];
+
+      query.find({
+        success: function(results) {
+          console.log("Successfully retrieved " + results.length + " navne.");
+            
+            // Create array
+            for (var i = 0; i < results.length; i++) { 
+                object[i] = results[i].get("Navn");            
+              }
+            
+            console.log(object);
+
+            // Find random name in array
+            var name = Math.floor(Math.random()*object.length);
+
+
+            // If array empty
+            if (object.length == 0) {
+              document.getElementById('answer').innerHTML = "Øv... Der er ikke flere navne i posen";
+              document.getElementById('nisseknap').disabled = true;
+            }
+
+            // If last name is the same - give feedback
+            else if (object.length == 1 && object[name] === currentUser.get("username")) {
+              document.getElementById('answer').innerHTML = "Øv! Der er ikke flere navne tilbage";
+              document.getElementById('nisseknap').disabled = true;
+            }
+
+            // If name is the same as user input - try again
+            else if (object[name] === currentUser.get("username")) {
+              // Find another random name  
+              getAnswer();  
+            }
+
+            // Else print name and remove from PARSE
+            else {
+              document.getElementById('answer').innerHTML = object[name];
+              document.getElementById('nisseknap').disabled = true;
+              document.getElementById('nisseknap').value="Du har fået en nisse!";
+
+              currentUser.set('nisse' , object[name]);
+              currentUser.save();
+              
+              console.log(object[name]);
+              // Remove name from database
+              var i = object.indexOf(object[name]);
+                if (i != -1) {              
+                  query.find({
+                    success: function(results) {               
+                      for (var i = 0; i < results.length; i+=1) {
+                        if (results[i].attributes.Navn == object[name])
+                        {
+                          results[i].destroy({});
+                        }
+                      }
+                    }
+                  });
+                } 
+            }
+          },
+
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      }); 
+    }
+
+    function newPass() {
+
+      if (document.getElementById('newPassword').value == "") {
+        document.getElementById('passwordChanged').innerHTML = "Husk at skrive en kode i feltet!";
+      }
+      else {
+      currentUser.set('password' , document.getElementById('newPassword').value);
+      currentUser.save();
+      document.getElementById('passwordChanged').innerHTML = "Din adgangskode er skiftet!";
+      }
+    }
+
+</script>
+
+</body>
+</html>
+
