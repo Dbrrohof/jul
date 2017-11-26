@@ -60,21 +60,21 @@ function getNisse() {
   });
 }
 
-function logInUser() {
+// function logInUser() {
 
-  var user = new Parse.User.logIn(document.getElementById('myName').value, document.getElementById('myPass').value, {
-      success: function(user) {
-        // Do stuff after successful login.
-        console.log("succes!")
-        window.location = "index.html"
-      },
-      error: function(user, error) {
-        // The login failed. Check error to see why.
-        document.getElementById('error').innerHTML = "Brugernavnet eller kodeordet er forkert.";
-        console.log("nope!")
-      }
-  });
-}
+//   var user = new Parse.User.logIn(document.getElementById('myName').value, document.getElementById('myPass').value, {
+//       success: function(user) {
+//         // Do stuff after successful login.
+//         console.log("succes!")
+//         window.location = "index.html"
+//       },
+//       error: function(user, error) {
+//         // The login failed. Check error to see why.
+//         document.getElementById('error').innerHTML = "Brugernavnet eller kodeordet er forkert.";
+//         console.log("nope!")
+//       }
+//   });
+// }
 
 // log out
 function logOut() {
@@ -255,37 +255,11 @@ function getWishlists() {
 }
 
 function getNamesLeft() {
-  // var wishLists = Parse.Object.extend("Navne");
-  // var query = new Parse.Query(wishLists);
-  // var object = [];     
-
-  
-  // query.find({
-  //         success: function(results) {
-  //           for (var i = 0; i < results.length; i++) { 
-  //               object[i] = results[i].get("navn"); 
-  //           }
-            
-  //           console.log(object);
-  //         }
-  //         });
+  firebase.database().ref('/hat').once('value').then(function(snapshot) {
+		console.log(snapshot.val())
+  });
 }
 
 function getPeoplePicked() {
-  // var picks = Parse.Object.extend("User");
-  // var query = new Parse.Query(picks);
-  // var object = [];     
-
   
-  // query.find({
-  //         success: function(results) {
-  //           for (var i = 0; i < results.length; i++) { 
-  //           object[i] = results[i].get("nisse");
-  //           }
-            
-  //           console.log(object);
-  //           var empties = object.length - object.filter(function(e){ return e === 0 || e }).length;
-  //           console.log("Der er " + empties + " personer, der mangler at trække en nisse");
-  //         }
-  //         });
 }
