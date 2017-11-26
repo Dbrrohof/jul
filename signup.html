@@ -69,7 +69,7 @@ function logInUser() {
 				sessionStorage.setItem("loggedIn", true);
 				sessionStorage.setItem("name", name);
 				sessionStorage.setItem("pass", pass);
-				window.location = "index";
+				window.location = "/";
 			} else {
 				document.getElementById('error').innerHTML = "Brugernavnet eller kodeordet er forkert.";
 			}
