@@ -19,7 +19,7 @@ var database = firebase.database();
 var storage = firebase.storage();
 
 var users = firebase.database().ref('users');
-var bucket = firebase.database().ref('hat');
+var bucket = firebase.database().ref('hat').orderByValue().equalTo(0);
 var wishlists = firebase.database().ref('wishlists');
 
 users.on('value', function(snapshot) {
@@ -50,7 +50,7 @@ if (currentUser) {
 
 function getNisse() {
   firebase.database().ref('/users/' + currentUser + '/nisse').once('value').then(function(snapshot) {
-		if (snapshot.val() == "none" || snapshot.val() == 0) {
+		if (snapshot.val() == "none" || snapshot.val() == 0 || snapshot.val() == null) {
       document.getElementById('answer').innerHTML = "???"
 		} else {
       document.getElementById('answer').innerHTML = "Du er nisse for " + snapshot.val();
@@ -87,7 +87,7 @@ function logOut() {
 function getAnswer() {
   document.getElementById('nisseknap').disabled = true;
   bucket.once('value', function(snapshot) {
-    bucketArray = snapshot.val();
+    bucketArray = Object.keys(snapshot.val());
     getAnswerReady();
   });
 }
@@ -107,12 +107,12 @@ function getAnswerReady() {
     document.getElementById('answer').innerHTML = "Øv... Der er ikke flere navne i posen";
   }
 
-  // Assign nisse to you
+  // // Assign nisse to you
   firebase.database().ref('users/' + currentUser).update({ nisse: chosenNisse });
   document.getElementById('answer').innerHTML = "Du er nisse for " + chosenNisse;
 
   // Remove nisse from bucket
-  firebase.database().ref('hat/' + chosenNisse).remove();
+  firebase.database().ref('hat/').update({ [chosenNisse]: 1});
   
 
   // // Get data from parse
@@ -239,7 +239,7 @@ function uploadWishlist() {
 
 //Get wishlists from Parse
 function getWishlists() {
-  let listOfWishlists = document.getElementById('wishlists');
+  let listOfWishlists = document.getElementById('wishlistsInner');
   listOfWishlists.innerHTML = "";
   var object = [];
 
@@ -255,7 +255,7 @@ function getWishlists() {
 }
 
 function getNamesLeft() {
-  firebase.database().ref('/hat').once('value').then(function(snapshot) {
+  firebase.database().ref('hat').orderByValue().equalTo(0).once('value').then(function(snapshot) {
 		console.log(snapshot.val())
   });
 }
