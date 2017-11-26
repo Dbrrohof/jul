@@ -17,15 +17,25 @@ var wishlistsArray = [];
 var bucketArray = [];
 var database = firebase.database();
 var storage = firebase.storage();
+var usersLeft = [];
 
 var users = firebase.database().ref('users');
 var bucket = firebase.database().ref('hat').orderByValue().equalTo(0);
 var wishlists = firebase.database().ref('wishlists');
 
+// Get people who has no nisse assigned
 users.on('value', function(snapshot) {
-  usersArray = snapshot.val();
+  Object.entries(snapshot.val()).forEach(
+    ([key, value]) => {if (!value.nisse) usersLeft[key] = value}
+  );
 });
 
+// all users
+users.on('value', function(snapshot) {
+  let obj = snapshot.val();
+});
+
+// get wishlists
 wishlists.on('value', function(snapshot) {
   wishlistsArray = snapshot.val();
   getWishlists();
@@ -54,7 +64,7 @@ function getNisse() {
       document.getElementById('answer').innerHTML = "???"
 		} else {
       document.getElementById('answer').innerHTML = "Du er nisse for <span class='name'>" + snapshot.val() + "</span>";
-      document.getElementById('nisseknap').disabled = true;
+      document.getElementById('nisseknap').style.display = 'none';
       document.getElementById('nisseknap').value = "Du er en nisse!";
 		}
   });
@@ -85,7 +95,7 @@ function logOut() {
 
 //Find nisse
 function getAnswer() {
-  document.getElementById('nisseknap').disabled = true;
+  document.getElementById('nisseknap').style.display = 'none';
   bucket.once('value', function(snapshot) {
     bucketArray = Object.keys(snapshot.val());
     getAnswerReady();
@@ -97,14 +107,23 @@ function getAnswerReady() {
   // loop over bucket to find a random nisse.
   let keys = Object.keys(bucketArray);
   let chosenNisse =  bucketArray[keys[ keys.length * Math.random() << 0]];
-
+  console.log(chosenNisse)
   // Check if nisse result is you
-  console.log(chosenNisse, currentUser)
+  // console.log(chosenNisse, currentUser)
   if (chosenNisse === currentUser && keys.length > 1) {
     getAnswerReady();
     return;
   } else if (chosenNisse === currentUser && keys.length == 1) {
     document.getElementById('answer').innerHTML = "Øv... Der er ikke flere navne i posen";
+  }
+  if (keys.length == 2) {
+    // check if the two names in the hat exist in the left array, if so, asign the "double-person" to currentUser
+    for (let i = 0; i < bucketArray.length; i++) {
+      if (usersLeft[bucketArray[i]]) {
+        //console.log(bucketArray[i] + " has no nisse and isn't picked, asigning her to currentUser");
+        chosenNisse = bucketArray[i];
+      }
+    }
   }
 
   // // Assign nisse to you
@@ -243,8 +262,6 @@ function getWishlists() {
   listOfWishlists.innerHTML = "";
   var object = [];
 
-  console.log()
-
   for (var key in wishlistsArray) {
     let listItem = document.createElement('li')
     listItem.innerHTML = '<a href="' + wishlistsArray[key].downloadurl + '" class="list-group-item" target="_blank">' + key + '</a>';
@@ -256,7 +273,7 @@ function getWishlists() {
 
 function getNamesLeft() {
   firebase.database().ref('hat').orderByValue().equalTo(0).once('value').then(function(snapshot) {
-		console.log(snapshot.val())
+		//console.log(snapshot.val())
   });
 }
 
