@@ -120,8 +120,10 @@ function getAnswerReady() {
     // check if the two names in the hat exist in the usersLeft array, if so, asign the "double-person" to currentUser
     for (let i = 0; i < bucketArray.length; i++) {
       if (usersLeft[bucketArray[i]]) {
-        //console.log(bucketArray[i] + " has no nisse and isn't picked, asigning her to currentUser");
-        chosenNisse = bucketArray[i];
+        // Make sure that the one picking a nisse, isn't the "double-person"
+        if (bucketArray[i] != currentUser) {
+          chosenNisse = bucketArray[i];
+        }
       }
     }
   }
