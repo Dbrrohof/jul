@@ -60,7 +60,7 @@ firebase.initializeApp(config);
 var users = firebase.database().ref('users');
 
 function logInUser() {
-	let name = document.getElementById('myName').value;
+	let name = toLowerCase(document.getElementById('myName').value);
 	let pass = document.getElementById('myPass').value;
 
 	return firebase.database().ref('/users/' + name).once('value').then(function(snapshot) {

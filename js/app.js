@@ -275,7 +275,7 @@ function getWishlists() {
 
 function getNamesLeft() {
   firebase.database().ref('hat').orderByValue().equalTo(0).once('value').then(function(snapshot) {
-		//console.log(snapshot.val())
+		console.log(snapshot.val())
   });
 }
 
